@@ -1,0 +1,13 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: auth-service
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+
+
