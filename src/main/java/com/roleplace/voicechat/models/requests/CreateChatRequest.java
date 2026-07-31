@@ -13,5 +13,5 @@ import lombok.Setter;
 @Setter
 public class CreateChatRequest {
     @NotBlank
-    String chatName = "New chat";
+    private String chatName = "New chat";
 }

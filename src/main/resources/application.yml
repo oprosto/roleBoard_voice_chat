@@ -21,9 +21,6 @@ spring:
   docker:
     compose:
       enabled: true
-vosk:
-  model:
-    path: H:/roleChat/roleBoard/libs/VOSK/vosk-model-ru-0.42
 
 # ─── Logging ────────────────────────────────────
 logging:
@@ -34,11 +31,11 @@ logging:
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
 livekit:
+  token-ttl-minutes: 15
   api:
     key: APIWZA6mdnoGFyg
     secret: SIeXUMJL9PgvUGNItQtN2VO3w6Rf9dpI5tyuAFMyRXZ
   url: ws://192.168.1.10:7880
-
 
 
 

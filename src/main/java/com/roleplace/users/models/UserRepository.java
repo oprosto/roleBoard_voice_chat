@@ -13,9 +13,9 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     User findFirstByUserTag(String tag);
     User findFirstById(UUID userId);
 
-    @Query("SELECT u.id FROM User u WHERE u.id IN :ids")
+    @Query("SELECT u FROM User u WHERE u.id IN :ids")
     List<User> findAllByIdOrdered(@Param("ids") Collection<UUID> ids);
-    @Query("SELECT u.id FROM User u WHERE u.id IN :ids")
+    @Query("SELECT u FROM User u WHERE u.id IN :ids")
     Set<User> findAllByIdFastSearch(@Param("ids") Collection<UUID> ids);
 
     boolean existsById(UUID userId);

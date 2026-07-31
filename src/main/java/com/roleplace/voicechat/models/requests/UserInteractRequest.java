@@ -1,6 +1,7 @@
 package com.roleplace.voicechat.models.requests;
 
 
+import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
 import java.util.Set;
@@ -11,6 +12,6 @@ import java.util.UUID;
 @Getter
 @Setter
 public class UserInteractRequest {
-    @NonNull
-    Set<UUID> userIds;
+    @NotEmpty
+    private Set<UUID> userIds;
 }

@@ -42,14 +42,20 @@ public class UserDataService {
     }
 
     public Set<User> getExistedUsers(Collection<UUID> userIds) throws NotFoundException {
-        Set<User> foundedUsers = userRepository.findAllByIdFastSearch(userIds);
-        List<Object> notExistUsers = List.of(foundedUsers.stream()
-                .filter(userIds::contains)
-                .toList());
-        if (CollectionTools.isEmpty(notExistUsers))
-        {
+        if (CollectionTools.isEmpty(userIds)) {
+            return Set.of();
+        }
+        Set<User> foundUsers = userRepository.findAllByIdFastSearch(userIds);
+        Set<UUID> foundIds = foundUsers.stream()
+                .map(User::getId)
+                .collect(java.util.stream.Collectors.toSet());
+        List<Object> notExistUsers = userIds.stream()
+                .filter(id -> !foundIds.contains(id))
+                .map(id -> (Object) id)
+                .toList();
+        if (!notExistUsers.isEmpty()) {
             throw new NotFoundException(ExceptionTools.createMessage("Users ", notExistUsers, " not found"));
         }
-        return foundedUsers;
+        return foundUsers;
     }
 }

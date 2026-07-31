@@ -5,6 +5,7 @@ import com.roleplace.voicechat.models.requests.UserInteractRequest;
 import com.roleplace.voicechat.services.TokenService;
 import exceptions.NotFoundException;
 import io.livekit.server.AccessToken;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -20,7 +21,7 @@ public class TokenController {
     private final TokenService tokenService;
 
     @PostMapping("/{chatId}/get")
-    public ResponseEntity<?> getToken(@PathVariable Long chatId, @RequestBody UserIdDTO request) {
+    public ResponseEntity<?> getToken(@PathVariable Long chatId, @Valid @RequestBody UserIdDTO request) throws NotFoundException {
         AccessToken accessToken = tokenService.createToken(chatId, request.userId());
         return ResponseEntity.ok().body(Map.of("token",accessToken.toJwt()));
     }
