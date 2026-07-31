@@ -1,1 +1,4 @@
 rootProject.name = 'voice-chat-service'
+
+includeBuild('../libs/security-lib')
+includeBuild('../libs/core-lib')

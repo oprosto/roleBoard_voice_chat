@@ -19,15 +19,26 @@ repositories {
 }
 
 dependencies {
+    implementation 'com.roleplace:core:0.0.1'
     //Документация
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.8'
 
     implementation 'org.springframework.boot:spring-boot-starter-webmvc'
     implementation 'org.springframework.boot:spring-boot-starter-websocket'
 
+    implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
 
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+
     implementation 'org.apache.httpcomponents.client5:httpclient5:5.4'
+    implementation 'com.alphacephei:vosk:0.3.45'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    implementation 'io.livekit:livekit-server:0.5.10'
+
+    runtimeOnly 'org.postgresql:postgresql'
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
